@@ -14,5 +14,5 @@ export const defaultTheme = {
   'purple-dark': '#5E60CE',
 
   blue: '#4EA8DE',
-  'blue-dark': '1E6F9F',
+  'blue-dark': '#1E6F9F',
 }
