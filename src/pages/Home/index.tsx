@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header'
 import { Task } from '../../components/Task'
-import { Container, ToDoContainer } from './style'
+import {
+  Container,
+  TodoInfo,
+  TaskStatus,
+  ToDoSection,
+  ToDoContent,
+} from './style'
 
 export function Home() {
   const [taskItem, setTaskItem] = useState<string>('')
@@ -13,15 +19,27 @@ export function Home() {
       <Header />
       <Task taskContent={setTaskItem} />
       <Container>
-        {isTask ? (
-          taskCardItems.map((item, index) => (
-            <ToDoContainer key={index}>
-              <p>Hello world</p>
-            </ToDoContainer>
-          ))
-        ) : (
-          <p>No task</p>
-        )}
+        <TodoInfo>
+          <TaskStatus>
+            <p>Tarefas criadas</p>
+            <span>0</span>
+          </TaskStatus>
+          <TaskStatus>
+            <p>Concluídas</p>
+            <span>0</span>
+          </TaskStatus>
+        </TodoInfo>
+        <ToDoSection>
+          {isTask ? (
+            taskCardItems.map((item, index) => (
+              <ToDoContent key={index}>
+                <p>Hello world</p>
+              </ToDoContent>
+            ))
+          ) : (
+            <p>No task</p>
+          )}
+        </ToDoSection>
       </Container>
     </>
   )

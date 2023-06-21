@@ -3,13 +3,14 @@ import { PlusCircle } from '@phosphor-icons/react'
 
 export const TaskContainer = styled.section`
   width: 100%;
-
-  margin-top: -27px;
+  max-width: 832px;
+  margin: -27px auto 0;
+  padding: 24px;
 `
 
 export const TaskForm = styled.form`
   width: 100%;
-  max-width: 784px;
+  padding-inline: 24px;
 
   display: flex;
   align-items: center;
@@ -17,9 +18,6 @@ export const TaskForm = styled.form`
   flex-direction: row;
 
   gap: 8px;
-  margin: 0 auto;
-
-  padding-inline: 24px;
 `
 export const TaskInput = styled.input`
   flex: 1;
