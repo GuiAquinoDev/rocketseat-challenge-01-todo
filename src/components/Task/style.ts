@@ -5,7 +5,7 @@ export const TaskContainer = styled.section`
   width: 100%;
   max-width: 832px;
   margin: -27px auto 0;
-  padding: 24px;
+  padding-inline: 24px;
 `
 
 export const TaskForm = styled.form`

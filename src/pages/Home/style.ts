@@ -1,4 +1,14 @@
 import styled from 'styled-components'
+import { Check, Trash } from '@phosphor-icons/react'
+import * as Checkbox from '@radix-ui/react-checkbox'
+
+interface TodoInfoTypeProps {
+  variant: 'todo' | 'done'
+}
+
+interface TaskStatusTypeProps {
+  variant: checked | unchecked | undefined
+}
 
 export const Container = styled.main`
   width: 100%;
@@ -16,7 +26,7 @@ export const TodoInfo = styled.div`
 
   margin-top: 64px;
 `
-export const TaskStatus = styled.div`
+export const TaskStatus = styled.div<TodoInfoTypeProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,7 +35,8 @@ export const TaskStatus = styled.div`
   gap: 10px;
 
   p {
-    color: ${(props) => props.theme.blue};
+    color: ${(props) =>
+      props.variant === 'todo' ? props.theme.blue : props.theme.purple};
 
     font-family: 'Inter', sans-serif;
     font-size: 14px;
@@ -47,45 +58,72 @@ export const ToDoSection = styled.section`
   width: 100%;
 
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `
 
-export const ToDoContent = styled.div`
+export const ToDoContent = styled.div<TaskStatusTypeProps>`
   width: 100%;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: baseline;
+  justify-content: space-between;
+  gap: 12px;
 
-  background-color: ${(props) => props.theme['gray-400']};
+  background-color: ${(props) => props.theme['gray-500']};
+  border: 1px solid ${(props) => props.theme['gray-400']};
   border-radius: 8px;
   padding: 16px;
 
-  input[type='radio'] {
-    appearance: none;
-    width: 17px;
-    height: 17px;
+  p {
+    flex: 1;
+    text-decoration: ${(props) =>
+      props.variant === 'checked' ? 'line-through' : 'none'};
+  }
+`
 
-    border: 2px solid ${(props) => props.theme.blue};
-    border-radius: 50%;
+export const CheckboxRoot = styled(Checkbox.Root)`
+  background-color: transparent;
+  border: 1px solid ${(props) => props.theme.blue};
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    &:after {
-      content: '';
-      display: block;
-      border-radius: 50%;
-      width: 0.75em;
-      height: 0.75em;
-      margin: 3px;
-    }
+  cursor: pointer;
 
-    &:focus {
-      outline: 2px solid blue;
-    }
+  &[data-state='checked'] {
+    border: none;
+    background-color: ${(props) => props.theme['purple-dark']};
+  }
 
-    &:checked {
-      &:after {
-        background-color: blue;
-      }
-    }
+  &:focus {
+    box-shadow: none;
+  }
+`
+
+export const CheckboxIndicator = styled(Checkbox.Indicator)``
+
+export const TaskCheck = styled(Check)`
+  width: 12px;
+  height: 12px;
+  color: ${(props) => props.theme['gray-100']};
+`
+
+export const TaskDelete = styled(Trash)`
+  width: 20px;
+  height: 20px;
+
+  margin: 6px;
+  color: ${(props) => props.theme['gray-300']};
+
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme.danger};
   }
 `

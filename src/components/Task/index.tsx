@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import {
   TaskContainer,
@@ -8,19 +7,19 @@ import {
   TaskPlusIcon,
 } from './style'
 
-interface ITaskProps {
-  taskContent: Dispatch<SetStateAction<string>>
-}
-
-type FormData = {
+interface IFormValues {
   taskItemContent: string
 }
 
-export function Task({ taskContent }: ITaskProps) {
-  const { handleSubmit, register, reset } = useForm<FormData>()
+interface ITaskProps {
+  onTaskSubmit: (taskItemContent: string) => void
+}
 
-  function handleTaskSubmit(data: FormData) {
-    taskContent(data.taskItemContent)
+export function Task({ onTaskSubmit }: ITaskProps) {
+  const { handleSubmit, register, reset } = useForm<IFormValues>()
+
+  function handleTaskSubmit(data: IFormValues) {
+    onTaskSubmit(data.taskItemContent)
     reset()
   }
 
