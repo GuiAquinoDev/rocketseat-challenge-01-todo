@@ -18,6 +18,7 @@ export const ToDoContent = styled.div`
 
   p {
     flex: 1;
+    color: ${(props) => props.theme['gray-100']};
   }
 
   [data-state='checked'] + p {

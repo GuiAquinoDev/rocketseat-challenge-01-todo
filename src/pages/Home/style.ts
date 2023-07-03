@@ -9,7 +9,7 @@ export const Container = styled.main`
   max-width: 784px;
 
   margin: 0 auto;
-  padding: 0 24px;
+  padding-inline: 24px;
 `
 export const TodoInfo = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ export const TodoInfo = styled.div`
   align-items: flex-end;
   justify-content: space-between;
 
-  margin-top: 64px;
+  margin: 64px auto 0;
 `
 export const TaskStatus = styled.div<TodoInfoTypeProps>`
   display: flex;
@@ -51,8 +51,9 @@ export const TaskStatus = styled.div<TodoInfoTypeProps>`
 export const ToDoSection = styled.section`
   width: 100%;
 
-  margin-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  margin-top: 24px;
 `
