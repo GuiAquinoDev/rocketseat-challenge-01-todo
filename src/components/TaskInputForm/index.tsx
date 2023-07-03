@@ -15,7 +15,7 @@ interface ITaskProps {
   onTaskSubmit: (taskItemContent: string) => void
 }
 
-export function Task({ onTaskSubmit }: ITaskProps) {
+export function TaskInputForm({ onTaskSubmit }: ITaskProps) {
   const { handleSubmit, register, reset } = useForm<IFormValues>()
 
   function handleTaskSubmit(data: IFormValues) {

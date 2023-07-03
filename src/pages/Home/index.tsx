@@ -1,22 +1,13 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header'
-import { Task } from '../../components/Task'
-import {
-  Container,
-  TodoInfo,
-  TaskStatus,
-  ToDoSection,
-  ToDoContent,
-  TaskCheck,
-  CheckboxIndicator,
-  CheckboxRoot,
-  TaskDelete,
-} from './style'
+import { TaskInputForm } from '../../components/TaskInputForm'
+import { Container, TodoInfo, TaskStatus, ToDoSection } from './style'
+import { Todo } from '../../components/Todo'
 
-interface ITaskItemProps {
+export interface ITaskItemProps {
   id: string
   description: string
-  status: string
+  status: boolean
 }
 
 export function Home() {
@@ -27,36 +18,36 @@ export function Home() {
     const newTask: ITaskItemProps = {
       id: String(new Date().getTime()),
       description: taskItemContent,
-      status: 'unchecked',
+      status: false,
     }
     setTasks([newTask, ...tasks])
   }
 
-  function handleTaskDelete(taskToDelete: string) {
+  function taskDelete(taskToDelete: string) {
     const tasksWithoutDeletedOne = tasks.filter((task) => {
       return task.id !== taskToDelete
     })
     setTasks(tasksWithoutDeletedOne)
   }
 
-  function handleTaskUpdate(data: any) {
-    const taskChecked = data.currentTarget.dataset.state
-    const taskId = data.currentTarget.dataset.targetId
+  function taskUpdate(data: any) {
+    const taskId = data.id
+    const taskStatus = data.status
 
     const taskUpdateStatus = tasks.map((task) => {
       if (task.id === taskId) {
-        return { ...task, status: taskChecked }
+        return { ...task, status: taskStatus }
       }
       return task
     })
-
+    console.log(taskUpdateStatus)
     setTasks(taskUpdateStatus)
   }
 
   return (
     <>
       <Header />
-      <Task onTaskSubmit={taskSubmit} />
+      <TaskInputForm onTaskSubmit={taskSubmit} />
       <Container>
         <TodoInfo>
           <TaskStatus variant="todo">
@@ -65,23 +56,18 @@ export function Home() {
           </TaskStatus>
           <TaskStatus variant="done">
             <p>Concluídas</p>
-            <span>
-              {tasks.filter((task) => task.status === 'checked').length}
-            </span>
+            <span>{tasks.filter((task) => task.status === true).length}</span>
           </TaskStatus>
         </TodoInfo>
         <ToDoSection>
           {isTask ? (
             tasks.map((task) => (
-              <ToDoContent key={task.id} variant={task.status}>
-                <CheckboxRoot data-task-id={task.id} onClick={handleTaskUpdate}>
-                  <CheckboxIndicator>
-                    <TaskCheck />
-                  </CheckboxIndicator>
-                </CheckboxRoot>
-                <p>{task.description}</p>
-                <TaskDelete onClick={() => handleTaskDelete(task.id)} />
-              </ToDoContent>
+              <Todo
+                key={task.id}
+                task={task}
+                onTaskDelete={taskDelete}
+                onTaskUpdate={taskUpdate}
+              />
             ))
           ) : (
             <p>No task</p>
