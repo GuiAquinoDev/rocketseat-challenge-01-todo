@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header'
 import { TaskInputForm } from '../../components/TaskInputForm'
-import { Container, TodoInfo, TaskStatus, ToDoSection } from './style'
+import { Container, ToDoSection } from './style'
 import { Todo } from '../../components/Todo'
+import { TodoInfo } from '../../components/TodoInfo'
 
 export interface ITaskItemProps {
   id: string
@@ -49,16 +50,7 @@ export function Home() {
       <Header />
       <TaskInputForm onTaskSubmit={taskSubmit} />
       <Container>
-        <TodoInfo>
-          <TaskStatus variant="todo">
-            <p>Tarefas criadas</p>
-            <span>{tasks.length}</span>
-          </TaskStatus>
-          <TaskStatus variant="done">
-            <p>Concluídas</p>
-            <span>{tasks.filter((task) => task.status === true).length}</span>
-          </TaskStatus>
-        </TodoInfo>
+        <TodoInfo todoStatus={tasks} />
         <ToDoSection>
           {isTask ? (
             tasks.map((task) => (
