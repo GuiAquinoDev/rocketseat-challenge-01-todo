@@ -2,8 +2,10 @@ import { ITaskItemProps } from '../../pages/Home'
 import {
   CheckboxIndicator,
   CheckboxRoot,
+  DeleteIcon,
   TaskCheck,
   TaskDelete,
+  TaskDescription,
   ToDoContent,
 } from './style'
 
@@ -34,8 +36,12 @@ export function Todo({ onTaskDelete, onTaskUpdate, task }: ITodoProps) {
           <TaskCheck />
         </CheckboxIndicator>
       </CheckboxRoot>
-      <p>{task.description}</p>
-      <TaskDelete onClick={() => handleTaskDelete(task.id)} />
+      <TaskDescription>
+        <p>{task.description}</p>
+      </TaskDescription>
+      <TaskDelete onClick={() => handleTaskDelete(task.id)}>
+        <DeleteIcon />
+      </TaskDelete>
     </ToDoContent>
   )
 }

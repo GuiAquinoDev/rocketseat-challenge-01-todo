@@ -15,4 +15,5 @@ export const defaultTheme = {
 
   blue: '#4EA8DE',
   'blue-dark': '#1E6F9F',
+  'blue-light': 'rgba(30,111,159,0.2)',
 }

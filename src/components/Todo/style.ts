@@ -17,7 +17,6 @@ export const ToDoContent = styled.div`
   padding: 16px;
 
   p {
-    flex: 1;
     color: ${(props) => props.theme['gray-100']};
   }
 
@@ -25,10 +24,11 @@ export const ToDoContent = styled.div`
     text-decoration: line-through;
   }
 `
+export const TaskDescription = styled.div`
+  flex: 1;
+`
 
 export const CheckboxRoot = styled(Checkbox.Root)`
-  background-color: transparent;
-  border: 1px solid ${(props) => props.theme.blue};
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -36,11 +36,23 @@ export const CheckboxRoot = styled(Checkbox.Root)`
   align-items: center;
   justify-content: center;
 
+  background-color: transparent;
+  border: 1px solid ${(props) => props.theme.blue};
   cursor: pointer;
 
   &[data-state='checked'] {
     border: none;
     background-color: ${(props) => props.theme['purple-dark']};
+
+    &:hover {
+      border: none;
+      background-color: ${(props) => props.theme.purple};
+    }
+  }
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme['blue-dark']};
+    background-color: ${(props) => props.theme['blue-light']};
   }
 
   &:focus {
@@ -56,16 +68,30 @@ export const TaskCheck = styled(Check)`
   color: ${(props) => props.theme['gray-100']};
 `
 
-export const TaskDelete = styled(Trash)`
-  width: 20px;
-  height: 20px;
+export const TaskDelete = styled.button`
+  width: 32px;
+  height: 32px;
 
-  margin: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px;
+  background-color: transparent;
+  border: none;
+`
+
+export const DeleteIcon = styled(Trash)`
+  width: 24px;
+  height: 24px;
+
   color: ${(props) => props.theme['gray-300']};
 
   cursor: pointer;
 
   &:hover {
     color: ${(props) => props.theme.danger};
+    background-color: ${(props) => props.theme['gray-400']};
+    border-radius: 6px;
   }
 `
