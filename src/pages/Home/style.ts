@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface TodoSectionProps {
+  variant: 'todo' | 'empty'
+}
+
 export const Container = styled.main`
   width: 100%;
   max-width: 784px;
@@ -8,7 +12,7 @@ export const Container = styled.main`
   padding-inline: 24px;
 `
 
-export const ToDoSection = styled.section`
+export const ToDoSection = styled.section<TodoSectionProps>`
   width: 100%;
 
   display: flex;
@@ -16,4 +20,7 @@ export const ToDoSection = styled.section`
   gap: 12px;
 
   margin-top: 24px;
+
+  border-top: ${(props) =>
+    props.variant === 'todo' ? 'none' : `1px solid ${props.theme['gray-300']}`};
 `

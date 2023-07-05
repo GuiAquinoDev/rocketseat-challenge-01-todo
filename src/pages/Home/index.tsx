@@ -4,6 +4,7 @@ import { TaskInputForm } from '../../components/TaskInputForm'
 import { Container, ToDoSection } from './style'
 import { Todo } from '../../components/Todo'
 import { TodoInfo } from '../../components/TodoInfo'
+import { TodoEmpty } from '../../components/TodoEmpty'
 
 export interface ITaskItemProps {
   id: string
@@ -13,7 +14,7 @@ export interface ITaskItemProps {
 
 export function Home() {
   const [tasks, setTasks] = useState<ITaskItemProps[]>([])
-  const isTask = true
+  const isTask = tasks.length
 
   function taskSubmit(taskItemContent: string) {
     const newTask: ITaskItemProps = {
@@ -51,20 +52,21 @@ export function Home() {
       <TaskInputForm onTaskSubmit={taskSubmit} />
       <Container>
         <TodoInfo todoStatus={tasks} />
-        <ToDoSection>
-          {isTask ? (
-            tasks.map((task) => (
+        {isTask ? (
+          tasks.map((task) => (
+            <ToDoSection key={task.id} variant="todo">
               <Todo
-                key={task.id}
                 task={task}
                 onTaskDelete={taskDelete}
                 onTaskUpdate={taskUpdate}
               />
-            ))
-          ) : (
-            <p>No task</p>
-          )}
-        </ToDoSection>
+            </ToDoSection>
+          ))
+        ) : (
+          <ToDoSection variant="empty">
+            <TodoEmpty />
+          </ToDoSection>
+        )}
       </Container>
     </>
   )

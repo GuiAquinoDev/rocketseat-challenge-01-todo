@@ -19,8 +19,9 @@ export function TodoInfo({ todoStatus }: ITodoProps) {
       <TodoStatus variant="done">
         <p>Concluídas</p>
         <span>
-          {todoStatus.length > 0 &&
-            `${String(completedTaskCount)} de ${String(todoStatus.length)}`}
+          {todoStatus.length > 0
+            ? `${String(completedTaskCount)} de ${String(todoStatus.length)}`
+            : '0'}
         </span>
       </TodoStatus>
     </TodoContainer>
