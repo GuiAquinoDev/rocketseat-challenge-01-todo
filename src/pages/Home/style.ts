@@ -19,8 +19,8 @@ export const ToDoSection = styled.section<TodoSectionProps>`
   flex-direction: column;
   gap: 12px;
 
-  margin-top: 24px;
+  margin: 24px auto;
 
   border-top: ${(props) =>
-    props.variant === 'todo' ? 'none' : `1px solid ${props.theme['gray-300']}`};
+    props.variant === 'todo' ? 'none' : `1px solid ${props.theme['gray-400']}`};
 `

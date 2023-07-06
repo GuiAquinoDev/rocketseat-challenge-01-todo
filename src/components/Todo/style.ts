@@ -20,10 +20,11 @@ export const ToDoContent = styled.div`
     color: ${(props) => props.theme['gray-100']};
   }
 
-  [data-state='checked'] + p {
+  [data-state='checked'] + div p {
     text-decoration: line-through;
   }
 `
+
 export const TaskDescription = styled.div`
   flex: 1;
 `
