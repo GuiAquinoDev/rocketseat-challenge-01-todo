@@ -1,11 +1,6 @@
 import { useForm } from 'react-hook-form'
-import {
-  TaskContainer,
-  TaskForm,
-  TaskInput,
-  TaskButton,
-  TaskPlusIcon,
-} from './style'
+import { TaskContainer, TaskForm, TaskInput, TaskPlusIcon } from './style'
+import { Button } from '../Button'
 
 interface IFormValues {
   taskItemContent: string
@@ -31,9 +26,9 @@ export function TaskInputForm({ onTaskSubmit }: ITaskProps) {
           placeholder="Adicione uma nova tarefa"
           {...register('taskItemContent')}
         />
-        <TaskButton type="submit">
+        <Button type="submit">
           Criar <TaskPlusIcon />
-        </TaskButton>
+        </Button>
       </TaskForm>
     </TaskContainer>
   )
