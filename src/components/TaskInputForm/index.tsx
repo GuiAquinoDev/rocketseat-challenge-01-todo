@@ -1,6 +1,16 @@
 import { useForm } from 'react-hook-form'
-import { TaskContainer, TaskForm, TaskInput, TaskPlusIcon } from './style'
+
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { Button } from '../Button'
+import {
+  TaskContainer,
+  TaskForm,
+  TaskInput,
+  TaskPlusIcon,
+  Toast,
+} from './style'
 
 interface IFormValues {
   taskItemContent: string
@@ -14,6 +24,11 @@ export function TaskInputForm({ onTaskSubmit }: ITaskProps) {
   const { handleSubmit, register, reset } = useForm<IFormValues>()
 
   function handleTaskSubmit(data: IFormValues) {
+    if (!data.taskItemContent) {
+      toast.warn('Por favor digite uma tarefa!')
+      return
+    }
+
     onTaskSubmit(data.taskItemContent)
     reset()
   }
@@ -30,6 +45,7 @@ export function TaskInputForm({ onTaskSubmit }: ITaskProps) {
           Criar <TaskPlusIcon />
         </Button>
       </TaskForm>
+      <Toast />
     </TaskContainer>
   )
 }

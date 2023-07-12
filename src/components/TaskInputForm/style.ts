@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { PlusCircle } from '@phosphor-icons/react'
+import { ToastContainer } from 'react-toastify'
 
 export const TaskContainer = styled.section`
   width: 100%;
@@ -39,3 +40,10 @@ export const TaskPlusIcon = styled(PlusCircle).attrs({
   width: '16px',
   height: '16px',
 })``
+
+export const Toast = styled(ToastContainer)`
+  .Toastify__toast-theme--light {
+    background-color: ${(props) => props.theme['gray-500']};
+    color: ${(props) => props.theme['gray-100']};
+  }
+`
