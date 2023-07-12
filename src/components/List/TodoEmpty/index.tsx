@@ -1,5 +1,5 @@
 import { ToDoContent } from './style'
-import clipboard from '../../assets/clipboard.svg'
+import clipboard from '../../../assets/clipboard.svg'
 
 export function TodoEmpty() {
   return (

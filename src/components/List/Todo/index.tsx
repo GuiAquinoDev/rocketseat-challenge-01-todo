@@ -1,4 +1,4 @@
-import { ITaskItemProps } from '../../pages/Home'
+import { TaskItemProps } from '../../../pages/Home'
 import {
   CheckboxIndicator,
   CheckboxRoot,
@@ -12,7 +12,7 @@ import {
 interface ITodoProps {
   onTaskDelete: (taskItemDelete: string) => void
   onTaskUpdate: (taskItemUpdate: any) => void
-  task: ITaskItemProps
+  task: TaskItemProps
 }
 
 export function Todo({ onTaskDelete, onTaskUpdate, task }: ITodoProps) {

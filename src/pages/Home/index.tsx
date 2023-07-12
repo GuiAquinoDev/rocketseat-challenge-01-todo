@@ -1,23 +1,21 @@
 import { useState } from 'react'
 import { Header } from '../../components/Header'
 import { TaskInputForm } from '../../components/TaskInputForm'
-import { Container, ToDoSection } from './style'
-import { Todo } from '../../components/Todo'
+import { Container } from './style'
 import { TodoInfo } from '../../components/TodoInfo'
-import { TodoEmpty } from '../../components/TodoEmpty'
+import { List } from '../../components/List'
 
-export interface ITaskItemProps {
+export type TaskItemProps = {
   id: string
   description: string
   status: boolean
 }
 
 export function Home() {
-  const [tasks, setTasks] = useState<ITaskItemProps[]>([])
-  const isTask = tasks.length
+  const [tasks, setTasks] = useState<TaskItemProps[]>([])
 
   function taskSubmit(taskItemContent: string) {
-    const newTask: ITaskItemProps = {
+    const newTask: TaskItemProps = {
       id: String(new Date().getTime()),
       description: taskItemContent,
       status: false,
@@ -42,7 +40,6 @@ export function Home() {
       }
       return task
     })
-    console.log(taskUpdateStatus)
     setTasks(taskUpdateStatus)
   }
 
@@ -52,21 +49,7 @@ export function Home() {
       <TaskInputForm onTaskSubmit={taskSubmit} />
       <Container>
         <TodoInfo todoStatus={tasks} />
-        {isTask ? (
-          tasks.map((task) => (
-            <ToDoSection key={task.id} variant="todo">
-              <Todo
-                task={task}
-                onTaskDelete={taskDelete}
-                onTaskUpdate={taskUpdate}
-              />
-            </ToDoSection>
-          ))
-        ) : (
-          <ToDoSection variant="empty">
-            <TodoEmpty />
-          </ToDoSection>
-        )}
+        <List data={tasks} taskDelete={taskDelete} taskUpdate={taskUpdate} />
       </Container>
     </>
   )
