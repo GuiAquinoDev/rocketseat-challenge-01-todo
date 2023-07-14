@@ -1,7 +1,8 @@
-import { TaskItemProps } from '../../pages/Home'
-import { ToDoSection } from './style'
 import { Todo } from './Todo'
 import { Empty } from './Empty'
+import { TaskItemProps } from '../../pages/Home'
+
+import { ToDoSection } from './style'
 
 interface IListProps {
   data: TaskItemProps[]

@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 import { PlusCircle } from '@phosphor-icons/react'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-export const TaskContainer = styled.section`
+export const Container = styled.section`
   width: 100%;
   max-width: 832px;
   margin: -27px auto 0;
   padding-inline: 24px;
 `
 
-export const TaskForm = styled.form`
+export const Form = styled.form`
   width: 100%;
   padding-inline: 24px;
 
@@ -36,7 +37,7 @@ export const TaskInput = styled.input`
   }
 `
 
-export const TaskPlusIcon = styled(PlusCircle).attrs({
+export const PlusIcon = styled(PlusCircle).attrs({
   width: '16px',
   height: '16px',
 })``

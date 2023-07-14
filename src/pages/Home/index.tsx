@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Header } from '../../components/Header'
 import { TaskInputForm } from '../../components/TaskInputForm'
-import { TodoInfo } from '../../components/TodoInfo'
+import { Info } from '../../components/TodoInfo'
 import { List } from '../../components/List'
 
 import { Container } from './style'
@@ -48,7 +48,7 @@ export function Home() {
       <Header />
       <TaskInputForm onTaskSubmit={taskSubmit} />
       <Container>
-        <TodoInfo todoStatus={tasks} />
+        <Info todoStatus={tasks} />
         <List data={tasks} taskDelete={taskDelete} taskUpdate={taskUpdate} />
       </Container>
     </>

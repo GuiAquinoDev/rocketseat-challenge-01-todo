@@ -1,29 +1,29 @@
-import { ITaskItemProps } from '../../pages/Home'
-import { TodoContainer, TodoStatus } from './style'
+import { TaskItemProps } from '../../pages/Home'
+import { Container, Status } from './style'
 
 interface ITodoProps {
-  todoStatus: ITaskItemProps[]
+  todoStatus: TaskItemProps[]
 }
 
-export function TodoInfo({ todoStatus }: ITodoProps) {
+export function Info({ todoStatus }: ITodoProps) {
   const completedTaskCount = todoStatus.filter(
     (task) => task.status === true,
   ).length
 
   return (
-    <TodoContainer>
-      <TodoStatus variant="todo">
+    <Container>
+      <Status variant="todo">
         <p>Tarefas criadas</p>
         <span>{todoStatus.length}</span>
-      </TodoStatus>
-      <TodoStatus variant="done">
+      </Status>
+      <Status variant="done">
         <p>Concluídas</p>
         <span>
           {todoStatus.length > 0
             ? `${String(completedTaskCount)} de ${String(todoStatus.length)}`
             : '0'}
         </span>
-      </TodoStatus>
-    </TodoContainer>
+      </Status>
+    </Container>
   )
 }

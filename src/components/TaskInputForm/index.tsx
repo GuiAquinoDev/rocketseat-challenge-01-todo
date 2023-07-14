@@ -1,16 +1,9 @@
 import { useForm } from 'react-hook-form'
 
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-
 import { Button } from '../Button'
-import {
-  TaskContainer,
-  TaskForm,
-  TaskInput,
-  TaskPlusIcon,
-  Toast,
-} from './style'
+import { toast } from 'react-toastify'
+
+import { Container, Form, TaskInput, PlusIcon, Toast } from './style'
 
 interface IFormValues {
   taskItemContent: string
@@ -34,18 +27,18 @@ export function TaskInputForm({ onTaskSubmit }: ITaskProps) {
   }
 
   return (
-    <TaskContainer>
-      <TaskForm onSubmit={handleSubmit(handleTaskSubmit)}>
+    <Container>
+      <Form onSubmit={handleSubmit(handleTaskSubmit)}>
         <TaskInput
           type="text"
           placeholder="Adicione uma nova tarefa"
           {...register('taskItemContent')}
         />
         <Button type="submit">
-          Criar <TaskPlusIcon />
+          Criar <PlusIcon />
         </Button>
-      </TaskForm>
+      </Form>
       <Toast />
-    </TaskContainer>
+    </Container>
   )
 }

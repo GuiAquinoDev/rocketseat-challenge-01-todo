@@ -4,7 +4,7 @@ interface TodoInfoTypeProps {
   variant: 'todo' | 'done'
 }
 
-export const TodoContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
 
   display: flex;
@@ -13,7 +13,7 @@ export const TodoContainer = styled.div`
 
   margin: 64px auto 0;
 `
-export const TodoStatus = styled.div<TodoInfoTypeProps>`
+export const Status = styled.div<TodoInfoTypeProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
