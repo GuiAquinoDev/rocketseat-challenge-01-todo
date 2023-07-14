@@ -10,23 +10,18 @@ import {
 } from './style'
 
 interface ITodoProps {
-  onTaskDelete: (taskItemDelete: string) => void
-  onTaskUpdate: (taskItemUpdate: any) => void
   task: TaskItemProps
+  onTaskDelete: (taskItemDelete: number) => void
+  onTaskUpdate: (taskItemUpdate: number) => void
 }
 
 export function Todo({ onTaskDelete, onTaskUpdate, task }: ITodoProps) {
-  function handleTaskDelete(id: string) {
-    onTaskDelete(id)
+  function handleTaskDelete() {
+    onTaskDelete(task.id)
   }
 
-  function handleTaskUpdate(props: boolean) {
-    const taskUpdate = {
-      id: task.id,
-      status: props,
-    }
-
-    onTaskUpdate(taskUpdate)
+  function handleTaskUpdate() {
+    onTaskUpdate(task.id)
   }
 
   return (
@@ -39,7 +34,7 @@ export function Todo({ onTaskDelete, onTaskUpdate, task }: ITodoProps) {
       <TaskDescription>
         <p>{task.description}</p>
       </TaskDescription>
-      <TaskDelete onClick={() => handleTaskDelete(task.id)}>
+      <TaskDelete onClick={handleTaskDelete}>
         <DeleteIcon />
       </TaskDelete>
     </ToDoContent>

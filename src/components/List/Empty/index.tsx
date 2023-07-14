@@ -1,7 +1,7 @@
 import { ToDoContent } from './style'
 import clipboard from '../../../assets/clipboard.svg'
 
-export function TodoEmpty() {
+export function Empty() {
   return (
     <ToDoContent>
       <img src={clipboard} alt="Empty Icon" />

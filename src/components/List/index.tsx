@@ -1,11 +1,11 @@
 import { TaskItemProps } from '../../pages/Home'
 import { ToDoSection } from './style'
 import { Todo } from './Todo'
-import { TodoEmpty } from './TodoEmpty'
+import { Empty } from './Empty'
 
 interface IListProps {
   data: TaskItemProps[]
-  taskDelete: (taskToDelete: string) => void
+  taskDelete: (taskToDelete: number) => void
   taskUpdate: (taskIdToBeChecked: number) => void
 }
 
@@ -24,7 +24,7 @@ export function List({ data, taskDelete, taskUpdate }: IListProps) {
         ))
       ) : (
         <ToDoSection variant="empty">
-          <TodoEmpty />
+          <Empty />
         </ToDoSection>
       )}
     </>
